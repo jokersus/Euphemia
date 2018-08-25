@@ -3,7 +3,7 @@ const settings = require('./messageReactionAdd.json');
 
 module.exports = (reaction, user) => {
     if (settings.hasOwnProperty(reaction.message.id)) {
-        let role = reaction.message.guild.roles.get(settings[reaction.message.id][reaction.emoji.name]);
+        const role = reaction.message.guild.roles.get(settings[reaction.message.id][reaction.emoji.name]);
         reaction.message.guild.fetchMember(user).then(member => {
             if (member.roles.has(role.id)) {
                 return member.send(new RichEmbed()
@@ -24,6 +24,6 @@ module.exports = (reaction, user) => {
                     );
                 });
             }
-        })
+        });
     }
-}
+};
