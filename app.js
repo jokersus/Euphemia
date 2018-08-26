@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const Commando = require('discord.js-commando');
-const path = require('path');   
+const path = require('path');
 const sqlite = require('sqlite');
 const config = require('./config.json');
 const client = new Commando.Client({
@@ -23,7 +23,11 @@ client.setProvider(
 client.registry
     .registerDefaultTypes()
     .registerGroups([
+<<<<<<< HEAD
         ['anime', 'Anime and Manga commands'],
+=======
+        ['anime', 'Anime and manga commands'],
+>>>>>>> bf3c38211203279f53002d61fbeef521a4492e0f
         ['bot', 'Pulic bot commands'],
         ['fun', 'Fun commands'],
         ['moderation', 'Moderation commands'],
@@ -40,4 +44,8 @@ client.registry
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
 
+<<<<<<< HEAD
 client.login(process.env.BOT_TOKEN || config.token).catch(console.error);
+=======
+client.login(process.env.BOT_TOKEN || config.token).catch(console.error);
+>>>>>>> bf3c38211203279f53002d61fbeef521a4492e0f
