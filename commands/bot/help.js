@@ -16,7 +16,7 @@ module.exports = class extends Command {
 
     async run(message) {
 
-        let args = message.content.split(' ');
+        const args = message.content.split(' ');
         if (args.length === 1) {
 
             if (cache) {
@@ -40,7 +40,6 @@ module.exports = class extends Command {
             }
 
         } else {
-
             const result = message.client.registry.commands.get(args[1]);
             if (!result) {
                 return message.channel.send(new RichEmbed()
@@ -65,4 +64,4 @@ module.exports = class extends Command {
             }
         }
     }
-}
+};

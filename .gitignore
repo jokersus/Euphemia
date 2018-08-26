@@ -3,3 +3,4 @@ settings.sqlite3
 /.vscode/
 config.json
 optional.json
+.env.bat
