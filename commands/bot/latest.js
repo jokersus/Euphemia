@@ -20,7 +20,7 @@ module.exports = class extends Command {
            return message.channel.send(build(changelog[0]));
        } else if (args[1] === 'list') {
             return message.channel.send(new RichEmbed()
-                .setColor(this.client.defaultColor)
+                .setColor(global.BOT_DEFAULT_COLOR)
                 .addField('Available versions', changelog.map(log => `**${log.version}** ${log.note}`))
             );
        } else {
@@ -30,12 +30,12 @@ module.exports = class extends Command {
            } else {
                 return message.channel.send(new RichEmbed()
                     .setColor('ORANGE')
-                    .addField(`Version ${log} not found`, `try ${this.client.commandPrefix}${this.name} list to view available versions`)
+                    .addField('Version not found', `try ${this.client.commandPrefix}${this.name} list to view available versions`)
                 );
            }
        }
     }
-}
+};
 
 function build(log) {
     return new RichEmbed()
@@ -45,4 +45,4 @@ function build(log) {
         .setColor([233, 91, 169])
         .addField('Major changes', log.major.map(x => `• ${x}`).join('\n'))
         .addField('Minor changes', log.minor.map(x => `• ${x}`).join('\n'))
-}
+};
