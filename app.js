@@ -10,7 +10,7 @@ const client = new Commando.Client({
     unknownCommandResponse: false
 });
 require('./events/event.js')(client);
-client.defaultColor = config.defaultColor;
+global.BOT_DEFAULT_COLOR = config.defaultColor || [233, 91, 169];
 
 client.setProvider(
     sqlite.open(path.join(__dirname, 'settings.sqlite3')).then(db => {
@@ -39,8 +39,4 @@ client.registry
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
 
-<<<<<<< HEAD
-client.login(process.env.DISCORD_TOKEN || config.token).catch(console.error);
-=======
 client.login(process.env.BOT_TOKEN || config.token).catch(console.error);
->>>>>>> 067e8e2... Module structure improvements
