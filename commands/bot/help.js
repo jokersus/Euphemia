@@ -7,7 +7,7 @@ module.exports = class extends Command {
     constructor(client) {
         super(client, {
             name: 'help',
-            group: 'utility',
+            group: 'bot',
             memberName: 'help',
             description: 'Lists available commands commands',
             examples: [`${client.commandPrefix}help`, `${client.commandPrefix}help ping`]
@@ -16,7 +16,7 @@ module.exports = class extends Command {
 
     async run(message) {
 
-        let args = message.content.split(' ');
+        const args = message.content.split(' ');
         if (args.length === 1) {
 
             if (cache) {
@@ -26,7 +26,7 @@ module.exports = class extends Command {
                 const embed = new RichEmbed()
                     .setTitle(`${message.client.user.username} commands`)
                     .setThumbnail(message.client.user.avatarURL || message.client.user.defaultAvatarURL)
-                    .setColor(message.client.defaultColor)
+                    .setColor(global.BOT_DEFAULT_COLOR)
                     .addBlankField()
                     .setFooter(`♥ Made with love by ${packageJSON.author}`);
 
@@ -40,7 +40,6 @@ module.exports = class extends Command {
             }
 
         } else {
-
             const result = message.client.registry.commands.get(args[1]);
             if (!result) {
                 return message.channel.send(new RichEmbed()

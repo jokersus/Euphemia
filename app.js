@@ -10,7 +10,7 @@ const client = new Commando.Client({
     unknownCommandResponse: false
 });
 require('./events/event.js')(client);
-client.defaultColor = config.defaultColor;
+global.BOT_DEFAULT_COLOR = config.defaultColor || [233, 91, 169];
 
 client.setProvider(
     sqlite.open(path.join(__dirname, 'settings.sqlite3')).then(db => {
@@ -19,9 +19,11 @@ client.setProvider(
 ).catch(console.error);
 
 
+
 client.registry
     .registerDefaultTypes()
     .registerGroups([
+        ['anime', 'Anime and Manga commands'],
         ['bot', 'Pulic bot commands'],
         ['fun', 'Fun commands'],
         ['moderation', 'Moderation commands'],
@@ -38,4 +40,4 @@ client.registry
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
 
-client.login(process.env.DISCORD_TOKEN || config.token).catch(console.error);
+client.login(process.env.BOT_TOKEN || config.token).catch(console.error);
