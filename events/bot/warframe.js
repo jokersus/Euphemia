@@ -9,12 +9,12 @@ module.exports = message => {
             body.push(match[1]);
         }
         if (body.length) {
-            message.reply(body.map(m => `\n${index}${normalize(m.split(' ').join('_'))}`));
+            message.reply(body.map(m => `\n${index}${normalize(m)}`));
         }
     }
 };
 
 function normalize(string) {
-    const temp = string.toLowerCase();
-    return temp.charAt(0).toUpperCase() + temp.slice(1);
+    const temp = string.toLowerCase().split(' ');
+    return temp.map(t => t.charAt(0).toUpperCase() + t.slice(1)).join('_');
 };
