@@ -15,6 +15,7 @@ module.exports = client => {
     client.on('messageUpdate', (oldMessage, newMessage) => serverEventHandler('messageUpdate')(oldMessage, newMessage));
     client.on('userUpdate', (oldUser, newUser) => serverEventHandler('userUpdate')(oldUser, newUser));
     client.on('message', botEventHandler('message'));
+    client.on('message', botEventHandler('warframe'));
     client.on('commandRun', () => client.messageStats.commands++);
     client.on('messageReactionAdd', (reaction, user) => botEventHandler('messageReactionAdd')(reaction, user));
     client.on('raw', event => botEventHandler('raw')(client, event));
