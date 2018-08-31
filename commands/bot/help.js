@@ -40,6 +40,7 @@ module.exports = class extends Command {
             }
 
         } else {
+
             const result = message.client.registry.commands.get(args[1]);
             if (!result) {
                 return message.channel.send(new RichEmbed()
@@ -64,4 +65,4 @@ module.exports = class extends Command {
             }
         }
     }
-};
+}
