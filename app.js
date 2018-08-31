@@ -43,6 +43,7 @@ client.registry
         ['owner', 'Owner only commands'],
         ['setup', 'Server utility setup commands'],
         ['server', 'Server-specific commands'],
+        ['subscription', 'Tag subscription commands'],
         ['utility', 'Utility commands']
     ])
     .registerDefaultGroups()
