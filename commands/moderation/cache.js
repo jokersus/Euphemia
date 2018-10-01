@@ -8,7 +8,6 @@ module.exports = class extends Command {
             group: 'moderation',
             memberName: 'cache',
             description: 'Caches messages in a channel',
-            userPermissions: ['KICK_MEMBERS'],
             examples: [`${client.commandPrefix}cache`],
             guildOnly: true,
             ownerOnly: true
