@@ -4,3 +4,6 @@ settings.sqlite3
 config.json
 optional.json
 .env
+.png
+.jpg
+.jpeg
