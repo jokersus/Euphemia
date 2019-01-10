@@ -52,6 +52,9 @@ module.exports = async (oldMember, newMember, Client) => {
 		const leveledRoles = newMember.roles.filter(role => CG_LEVELED_ROLES.includes(role.id));
 		const sortedRoles = leveledRoles.sort((a, b) => a.position - b.position).map(role => role.id);
 
+		if (sortedRoles.length === 1) {
+			return;
+		}
 
 		// Maybe another day
 
