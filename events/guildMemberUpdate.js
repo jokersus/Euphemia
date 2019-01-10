@@ -12,7 +12,7 @@ const CG_LEVELED_ROLES = [
 		"424582023085293569", "424582117012406272"
 	];
 
-const CG_LEVELED_ROLES_NOTIF_CHANNEL = '420272882900533248';
+const CG_LEVELED_ROLES_NOTIF_CHANNEL = '292279509900853248';
 
 module.exports = async (oldMember, newMember, Client) => {
     const entry = Client.provider.get(newMember.guild, 'guildMemberUpdate', false);
