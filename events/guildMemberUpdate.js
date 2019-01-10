@@ -47,14 +47,18 @@ module.exports = async (oldMember, newMember, Client) => {
 	if (newMember.guild.id !== '292277485310312448' || Client.users.get(newMember.id).LEVELED_ROLE_LOCK) {
 		return;
 	} else {
-		Client.users.get(newMember.id).LEVELED_ROLE_LOCK = true;
 
 		const leveledRoles = newMember.roles.filter(role => CG_LEVELED_ROLES.includes(role.id));
 		const sortedRoles = leveledRoles.sort((a, b) => a.position - b.position).map(role => role.id);
 
 		if (sortedRoles.length === 1) {
-			return;
+			const oldMemberLeveledRoles = oldMember.roles.filter(role => CG_LEVELED_ROLES.includes(role.id));
+			if (oldMemberLeveledRoles.size !== 0) {
+				return;
+			}
 		}
+
+		Client.users.get(newMember.id).LEVELED_ROLE_LOCK = true;
 
 		// Maybe another day
 
