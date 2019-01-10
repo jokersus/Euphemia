@@ -1,6 +1,20 @@
 const { RichEmbed } = require('discord.js');
+const CG_LEVELED_ROLES = [
+	// '424582117012406272', '424582023085293569',
+	// '424581929635938305', '424581772014256138',
+	// 	'424581634243690509', '424581537250672640',
+	// 	'424581432304730112', '424581237559263242'
+	// ];
+	// [
+		"424581237559263242", "424581432304730112",
+		"424581537250672640", "424581634243690509",
+		"424581772014256138", "424581929635938305",
+		"424582023085293569", "424582117012406272"
+	];
 
-module.exports = (oldMember, newMember, Client) => {
+const CG_LEVELED_ROLES_NOTIF_CHANNEL = '420272882900533248';
+
+module.exports = async (oldMember, newMember, Client) => {
     const entry = Client.provider.get(newMember.guild, 'guildMemberUpdate', false);
     if (entry && entry.log) {
         if (oldMember.nickname !== newMember.nickname) {
@@ -25,4 +39,44 @@ module.exports = (oldMember, newMember, Client) => {
             );
         }
     }
+
+
+	// CG stuff
+	// Apologies in advance
+
+	if (newMember.guild.id !== '292277485310312448' || Client.users.get(newMember.id).LEVELED_ROLE_LOCK) {
+		return;
+	} else {
+		Client.users.get(newMember.id).LEVELED_ROLE_LOCK = true;
+
+		const leveledRoles = newMember.roles.filter(role => CG_LEVELED_ROLES.includes(role.id));
+		const sortedRoles = leveledRoles.sort((a, b) => a.position - b.position).map(role => role.id);
+
+		await newMember.removeRoles(sortedRoles.slice(0, -1));
+
+		if (sortedRoles.length) {
+			return newMember.guild.channels
+				.get(CG_LEVELED_ROLES_NOTIF_CHANNEL)
+				.send(`🆙  |  ${newMember.toString()} is now ${newMember.guild.roles.get(sortedRoles[sortedRoles.length - 1]).name}!`);
+		}
+
+		Client.users.get(newMember.id).LEVELED_ROLE_LOCK = false
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 };
