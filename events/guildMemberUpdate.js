@@ -52,10 +52,18 @@ module.exports = async (oldMember, newMember, Client) => {
 		const leveledRoles = newMember.roles.filter(role => CG_LEVELED_ROLES.includes(role.id));
 		const sortedRoles = leveledRoles.sort((a, b) => a.position - b.position).map(role => role.id);
 
+
+		// Maybe another day
+
+		// const leveledRoles = newMember.roles
+		// 	.filter(role => CG_LEVELED_ROLES.includes(role.id))
+		// 	.sort((a, b) => a.position - b.position)
+		// 	.map(role => role.id)
+
 		await newMember.removeRoles(sortedRoles.slice(0, -1));
 
 		if (sortedRoles.length) {
-			return newMember.guild.channels
+			newMember.guild.channels
 				.get(CG_LEVELED_ROLES_NOTIF_CHANNEL)
 				.send(`🆙  |  ${newMember.toString()} is now ${newMember.guild.roles.get(sortedRoles[sortedRoles.length - 1]).name}!`);
 		}
