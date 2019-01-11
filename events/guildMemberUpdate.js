@@ -72,7 +72,7 @@ module.exports = async (oldMember, newMember, Client) => {
 		if (sortedRoles.length) {
 			newMember.guild.channels
 				.get(CG_LEVELED_ROLES_NOTIF_CHANNEL)
-				.send(`🆙  |  ${newMember.toString()} is now ${newMember.guild.roles.get(sortedRoles[sortedRoles.length - 1]).name}!`);
+				.send(`🆙  |  ${newMember.toString()} is now \`${newMember.guild.roles.get(sortedRoles[sortedRoles.length - 1]).name}\`!`);
 		}
 
 		Client.users.get(newMember.id).LEVELED_ROLE_LOCK = false
