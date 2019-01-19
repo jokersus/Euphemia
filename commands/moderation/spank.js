@@ -22,7 +22,7 @@ module.exports = class extends Command {
 					const targetMember = message.mentions.members.first();
 					await targetMember.addRole(SPANK_ROLE_ID);
 					const flag = Math.random() * 100 < 15;
-					setUnmuteTimeout(this.client, message.member);
+					setUnmuteTimeout(this.client, targetMember);
 					let messageBody = `${targetMember.toString()} has been spanked by ${message.member.toString()}`;
 					if (flag) {	// 20% chance
 						messageBody += ' ' + SPANK_EMOTE;
