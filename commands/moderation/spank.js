@@ -30,7 +30,7 @@ module.exports = class extends Command {
 					`);
 			   }
 		   } else {
-			   return message.replt('Are you trying to spank thin air?')
+			   return message.reply('Are you trying to spank thin air?')
 		   }
 	   } else {
 		   await message.member.addRole(SPANK_ROLE_ID);
