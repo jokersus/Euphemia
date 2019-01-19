@@ -20,7 +20,7 @@ module.exports = class extends Command {
 		   if (message.mentions.members.size) {
 			   if (message.member.hasPermission('MANAGE_ROLES')) {
 					const targetMember = message.mentions.members.first();
-					await targetMember.addRole(SPANK_ROLE_ID));
+					await targetMember.addRole(SPANK_ROLE_ID);
 					const flag = Math.random() * 100 < 15;
 					setUnmuteTimeout(this.client, message.member);
 					let messageBody = `${targetMember.toString()} has been spanked by ${message.member.toString()}`;
