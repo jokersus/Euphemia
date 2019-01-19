@@ -22,7 +22,7 @@ module.exports = class extends Command {
 					const targets = message.mentions.members;
 					await targets.tap(async member => member.addRole(SPANK_ROLE_ID));
 					const flag = Math.random() * 100 < 15;
-					return message.send(`${targets
+					return message.channel.send(`${targets
 						.map(member => member.toString())
 						.join(' ')}
 						${targets.size === 1 ? '' : ' all '} got spanked by ${message.member.toString()}
@@ -33,8 +33,8 @@ module.exports = class extends Command {
 			   return message.reply('Are you trying to spank thin air?')
 		   }
 	   } else {
-		   await message.member.addRole(SPANK_ROLE_ID);
-		   return message.reply('Nice try. You got yourself spanked.');
+			await message.member.addRole(SPANK_ROLE_ID);
+			return message.reply('Nice try. You got yourself spanked.');
 	   }
 	}
 };
