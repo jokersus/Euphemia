@@ -18,7 +18,7 @@ module.exports = class extends Command {
    async run(message) {
 	   if (message.member.hasPermission('MANAGE_ROLES')) {
 		   if (message.mentions.members.size) {
-			   if (messqage.member.hasPermission('MANAGE_ROLES')) {
+			   if (message.member.hasPermission('MANAGE_ROLES')) {
 					const targets = message.mentions.members;
 					await targets.tap(async member => member.addRole(SPANK_ROLE_ID));
 					const flag = Math.random() * 100 < 15;
