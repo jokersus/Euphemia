@@ -19,22 +19,29 @@ module.exports = class extends Command {
 	   if (message.member.hasPermission('MANAGE_ROLES')) {
 		   if (message.mentions.members.size) {
 			   if (message.member.hasPermission('MANAGE_ROLES')) {
-					const targets = message.mentions.members;
-					await targets.tap(async member => member.addRole(SPANK_ROLE_ID));
+					const targetMember = message.mentions.members.first();
+					await targetMember.addRole(SPANK_ROLE_ID));
 					const flag = Math.random() * 100 < 15;
-					return message.channel.send(`${targets
-						.map(member => member.toString())
-						.join(' ')}
-						${targets.size === 1 ? '' : ' all '} got spanked by ${message.member.toString()}
-						${flag ? SPANK_EMOTE : ''}
-					`);
+					setUnmuteTimeout(this.client, message.member);
+					let messageBody = `${targetMember.toString()} has been spanked by ${message.member.toString()}`;
+					if (flag  < 20) {	// 20% chance
+						messageBody += ' ' + SPANK_EMOTE;
+					}
+					return message.channel.send(messageBody);
 			   }
 		   } else {
 			   return message.reply('Are you trying to spank thin air?')
 		   }
 	   } else {
 			await message.member.addRole(SPANK_ROLE_ID);
+			setUnmuteTimeout(this.client, message.member);
 			return message.reply('Nice try. You got yourself spanked.');
 	   }
-	}
+   }
 };
+
+function setUnmuteTimeout(client, member) {
+	client.setTimeout((member, role) => member.removeRole(role),
+		1 * 60000, member, SPANK_ROLE_ID
+	);
+}
