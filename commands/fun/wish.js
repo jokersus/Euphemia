@@ -106,8 +106,6 @@ module.exports = class extends Command {
 			}
 		})(oldWishMessageId);
 
-		console.log(wishMessage);
-
 		wishMessage.edit('', new RichEmbed()
 			.setColor(TANABATA_COLOR)
 			.setTitle('🌸 Someone has made a wish')
