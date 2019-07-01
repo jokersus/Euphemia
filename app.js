@@ -27,6 +27,18 @@ global.BOT_DEFAULT_COLOR = config.defaultColor || [233, 91, 169];
 client.setProvider(
     sqlite.open(path.join(__dirname, 'settings.sqlite3')).then(db => {
 		client.sqlite = db;
+
+		// Temporary Tanabata stuff
+		db.run(`CREATE TABLE IF NOT EXISTS "Wishes" (
+			"id"	TEXT NOT NULL,
+			"wish_1"	TEXT NOT NULL,
+			"wish_2"	TEXT NOT NULL,
+			"message_id"	TEXT,
+			PRIMARY KEY("id")
+		);
+		`);
+		// ---------------------------
+
         return new Commando.SQLiteProvider(db);
     })
 ).catch(console.error);
