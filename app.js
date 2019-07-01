@@ -24,10 +24,10 @@ MongoClient.connect(process.env.DATABASE_URL, { useNewUrlParser: true }).then(db
 require('./events/event.js')(client);
 global.BOT_DEFAULT_COLOR = config.defaultColor || [233, 91, 169];
 
-
 client.setProvider(
     sqlite.open(path.join(__dirname, 'settings.sqlite3')).then(db => {
-        return new Commando.SQLiteProvider(db)
+		client.sqlite = db;
+        return new Commando.SQLiteProvider(db);
     })
 ).catch(console.error);
 
