@@ -4,7 +4,7 @@ const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
 
 const TANABATA_COLOR = '#FFCBE2'
-const TANABATA_CHANNEL = '420272882900533248';
+const TANABATA_CHANNEL = '595362733382303757';
 
 module.exports = class extends Command {
 	constructor(client) {
