@@ -115,7 +115,7 @@ module.exports = class extends Command {
 
 		await db.run('UPDATE Wishes SET wish_1 = (?), wish_2 = (?), message_id = (?) WHERE id = (?)', wishes[0], wishes[1], hash, wishMessage.id);
 
-		return message.channel.send(new RichEmbed()
+		return reply.edit('', new RichEmbed()
 			.setColor('GREEN')
 			.setTitle('Updated your wish')
 		);
