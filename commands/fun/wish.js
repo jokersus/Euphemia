@@ -95,8 +95,6 @@ module.exports = class extends Command {
 			);
 		}
 
-		console.log(oldWishMessageId);
-
 		const wishMessage = await (async id => {
 			try {
 				const message = await tanabataChannel.fetchMessage(oldWishMessageId);
