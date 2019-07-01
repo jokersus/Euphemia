@@ -3,8 +3,6 @@ const packageJSON = require('../../package.json');
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
 
-const SALT_ROUNDS = 10;
-
 const TANABATA_COLOR = '#FFCBE2'
 const TANABATA_CHANNEL = '420272882900533248';
 
