@@ -111,7 +111,7 @@ module.exports = class extends Command {
 			.addField('Wish 2', wishes[1])
 		);
 
-		await db.run('UPDATE Wishes SET wish_1 = (?), wish_2 = (?), message_id = (?) WHERE id = (?)', wishes[0], wishes[1], hash, wishMessage.id);
+		await db.run('UPDATE Wishes SET wish_1 = (?), wish_2 = (?), message_id = (?) WHERE id = (?)', wishes[0], wishes[1], wishMessage.id, hash);
 
 		return reply.edit('', new RichEmbed()
 			.setColor('GREEN')
