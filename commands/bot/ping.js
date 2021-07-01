@@ -8,6 +8,7 @@ module.exports = class extends ECommand {
 	constructor(client) {
 		super(client, {
 			aliases: ['ping'],
+			slash: true,
 			description: {
 				content: 'Replies with ping',
 				usage: '',
