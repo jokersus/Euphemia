@@ -1,6 +1,7 @@
 const {MessageEmbed, Permissions} = require('discord.js');
 
 const {ArgConsts} = require('../../lib');
+const {ArgConstsInt} = require('../../lib');
 const {ModerationCommand, ModerationCommandResult} = require('../../modules/moderation');
 
 module.exports = class extends ModerationCommand {
@@ -27,6 +28,13 @@ module.exports = class extends ModerationCommand {
 					optional: true,
 					default: () => null,
 				},
+			],
+			interactionArgs: [
+				{
+					id: 'ids',
+					type: ArgConstsInt.MEMBER,
+					optional: true,
+				}
 			],
 			guildOnly: true,
 			nsfw: false,
