@@ -6,6 +6,7 @@ const {ModerationCommand, ModerationCommandResult} = require('../../modules/mode
 module.exports = class extends ModerationCommand {
 	constructor(client) {
 		super(client, {
+			slash: true,
 			actionName: 'kick',
 			aliases: ['kick'],
 			description: {
@@ -19,13 +20,15 @@ module.exports = class extends ModerationCommand {
 				{
 					id: 'members',
 					type: ArgConsts.MEMBERS,
+					description: 'Members to kick',
 					message: 'Please mention members to kick'
 				},
 				{
 					id: 'reason',
 					type: ArgConsts.TEXT,
+					description: 'Reason to kick',
 					optional: true,
-					default: () => 'No reason provided'
+					default: () => null
 				},
 			],
 			guildOnly: true,
